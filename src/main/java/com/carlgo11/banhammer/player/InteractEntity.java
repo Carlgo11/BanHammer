@@ -1,6 +1,5 @@
 package com.carlgo11.banhammer.player;
 
-import net.minecraft.server.v1_7_R1.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -17,7 +16,7 @@ public class InteractEntity implements Listener {
             Player p = (Player) e.getRightClicked();
         if(e.getPlayer().getItemInHand().getType().equals(Material.GOLD_AXE)){
             if(e.getPlayer().hasPermission("lain.banhammer")){
-             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tempban "+p.getName()+" 2d");
+             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tempban "+p.getName()+" 1d");
             }
         }else if(e.getPlayer().getItemInHand().getType().equals(Material.STONE_AXE)){
             if(e.getPlayer().hasPermission("lain.banhammer")){
