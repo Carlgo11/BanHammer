@@ -2,6 +2,8 @@ package com.carlgo11.banhammer;
 
 import com.carlgo11.banhammer.player.Interact;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -11,31 +13,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class BanHammer extends JavaPlugin {
 
     /**
+     * List of all commands in the config.yml.
+     * @since 1.1
+     */
+    public Map commands = new HashMap();
+    
+    /**
      * Functions to be called upon boot.
      * @since 1.0
      */
     @Override
     public void onEnable()
     {
+        this.commands.put("banhammer-command", this.getConfig().getString("banhammer-command"));
+        this.commands.put("kickhammer-command", this.getConfig().getString("kickhammer-command"));
         checkConfig();
         getServer().getPluginManager().registerEvents(new Interact(this), this);
-    }
-
-    /**
-     * Get a variable in the config.
-     * @param name Variable name in config.
-     * @param inputvar Variable to be replaced with something.
-     * @param outputvar Variable to replace the "inputvar" with.
-     * @return Returns content of config variable.
-     * @since 1.1
-     */
-    public String getConfigVar(String name, String inputvar, String outputvar)
-    {
-        String output = this.getConfig().getString(name);
-        if (output.toLowerCase().contains(inputvar.toLowerCase())) {
-            return output.replaceAll(inputvar, outputvar);
-        }
-        return "";
     }
 
     /**

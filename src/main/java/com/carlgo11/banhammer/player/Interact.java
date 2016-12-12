@@ -13,6 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 
 /**
  * Entity interaction-related functions
+ *
  * @since 1.1
  */
 public class Interact implements Listener {
@@ -26,6 +27,7 @@ public class Interact implements Listener {
 
     /**
      * Function to be called upon player interaction.
+     *
      * @param e PlayerInteractIntityEvent.
      * @since 1.0
      */
@@ -36,12 +38,12 @@ public class Interact implements Listener {
             Player p = (Player) e.getRightClicked();
             if (e.getPlayer().getItemInHand().getType().equals(Material.GOLD_AXE)) {
                 if (e.getPlayer().hasPermission("banhammer.ban")) {
-                    Bukkit.dispatchCommand(e.getPlayer(), BanHammer.getConfigVar("banhammer-command", "<player>", p.getName()));
+                    String command = BanHammer.commands.get("banhammer-command").toString().replaceAll("<player>", e.getPlayer().getName());
+                    Bukkit.dispatchCommand(e.getPlayer(), command);
                 }
             } else if (e.getPlayer().getItemInHand().getType().equals(Material.STONE_AXE)) {
                 if (e.getPlayer().hasPermission("banhammer.kick")) {
-                    String command = BanHammer.getConfigVar("kickhammer-command", "<player>", p.getName());
-                    BanHammer.getServer().broadcastMessage(command);
+                    String command = BanHammer.commands.get("kickhammer-command").toString().replaceAll("<player>", e.getPlayer().getName());
                     Bukkit.dispatchCommand(e.getPlayer(), command);
                 }
             } else if (e.getPlayer().getItemInHand().getType().equals(Material.IRON_AXE)) {
