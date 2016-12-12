@@ -1,4 +1,25 @@
 main: com.carlgo11.banhammer.BanHammer
 name: BanHammer
-version: 1.0
+version: 1.1
 Author: carlgo11
+description: Ban, kick and kill players using axes.
+website: https://github.com/Carlgo11/BanHammer/
+
+
+permissions:
+  banhammer.ban:
+    default: op
+    description: Permission to use the banhammer.
+  banhammer.ebola:
+    default: op
+    description: Permission to use the "ebolahammer".
+  banhammer.kick:
+    default: op
+    description: Permission to use the kickhammer.
+  banhammer.*:
+    default: op
+    description: Permission to use all the hammers.
+    children:
+      banhammer.ban: true
+      banhammer.ebola: true
+      banhammer.kick: true
