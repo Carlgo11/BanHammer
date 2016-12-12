@@ -38,12 +38,12 @@ public class Interact implements Listener {
             Player p = (Player) e.getRightClicked();
             if (e.getPlayer().getItemInHand().getType().equals(Material.GOLD_AXE)) {
                 if (e.getPlayer().hasPermission("banhammer.ban")) {
-                    String command = BanHammer.commands.get("banhammer-command").toString().replaceAll("<player>", e.getPlayer().getName());
+                    String command = BanHammer.commands.get("banhammer-command").toString().replaceAll("<player>", p.getName());
                     Bukkit.dispatchCommand(e.getPlayer(), command);
                 }
             } else if (e.getPlayer().getItemInHand().getType().equals(Material.STONE_AXE)) {
                 if (e.getPlayer().hasPermission("banhammer.kick")) {
-                    String command = BanHammer.commands.get("kickhammer-command").toString().replaceAll("<player>", e.getPlayer().getName());
+                    String command = BanHammer.commands.get("kickhammer-command").toString().replaceAll("<player>", p.getName());
                     Bukkit.dispatchCommand(e.getPlayer(), command);
                 }
             } else if (e.getPlayer().getItemInHand().getType().equals(Material.IRON_AXE)) {
